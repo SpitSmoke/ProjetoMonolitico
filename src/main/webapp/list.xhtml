@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+<h:head>
+  <h:outputStylesheet library="myStyle" name="style.css" />
+</h:head>
+<h:body>
+  <h1>List</h1> 
+  <h:form>
+    <h:dataTable style="width: 600px; text-align: center;" value="#{listBean.list}" var="p">  
+      <h:column>  
+        <f:facet name="header">Name</f:facet>  
+        <h:outputText value="#{p.name}"/>  
+      </h:column>  
+      <h:column>  
+        <f:facet name="header">Telephone Number</f:facet>  
+        <h:outputText value="#{p.telephone}"/>  
+      </h:column>  
+      <h:column>  
+        <f:facet name="header">Telephone Type</f:facet>  
+        <h:outputText value="#{p.telephoneType.description}" />  
+      </h:column>  
+        <h:column>
+            <f:facet name="header">Delete</f:facet>
+            <h:commandLink value="X" action="#{listBean.delete(p)}" />
+        </h:column>
+    </h:dataTable>  
+  </h:form>
+  <button style="margin-top: 30px;" onclick="location.href='/user/index.xhtml'" type="button">add telephone</button>
+ 
+</h:body>
+
+</html>

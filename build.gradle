@@ -1,0 +1,35 @@
+plugins {
+	id 'java'
+  id 'application'
+  id 'war'
+}
+
+mainClassName = 'dev.lobophf.sample.SampleApplication'
+group = 'dev.lobophf'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+  implementation group: 'org.postgresql', name: 'postgresql', version: '42.5.1'
+  implementation group: 'org.glassfish', name: 'javax.faces', version: '2.4.0'
+  implementation group: 'org.primefaces', name: 'primefaces', version: '12.0.0'
+  compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+  implementation group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
+  implementation 'javax.inject:javax.inject:1'
+}
+
+tasks.named('test') {
+  useJUnitPlatform()
+}
+
+run{
+  args += 'first_arg'
+}
+
+war {
+    archiveFileName = 'user.war'
+}
